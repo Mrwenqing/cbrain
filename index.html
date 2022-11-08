@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    
+
   </title>
   <script src="js/jquery.min.js"></script>
   <link type="text/css" href="./css/style.css" rel="stylesheet" />
@@ -29,15 +29,9 @@
 </head>
 
 <body>
-  <audio 
-  autoplay="autoplay" 
-  loop="loop"  
-  preload="auto"
-  src="./renxi.mp3">
+  <audio preload autoplay loop id="vd">
+    <source src="./renxi.mp3" type="audio/mpeg">
   </audio>
-  <!-- <audio autoplay="autoplay" loop="loop" preload="auto">
-    <source src="renxi.mp3" type="audio/mp3" />
-  </audio> -->
   <div id="jsi-cherry-container" class="container">
     <div class="box">
       <ul class="minbox">
@@ -60,6 +54,19 @@
   </div>
 
   <script>
+    window.onload = function () {
+      setInterval("toggleSound()", 100);
+    }
+
+    function toggleSound() {
+      var music = document.getElementById("vd");//获取ID  
+
+      if (music.paused) { //判读是否播放  
+        music.paused = false;
+        music.play(); //没有就播放 
+      }
+    }
+
     var RENDERER = {
       INIT_CHERRY_BLOSSOM_COUNT: 30,
       MAX_ADDING_INTERVAL: 10,
